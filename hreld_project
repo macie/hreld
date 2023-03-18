@@ -1,0 +1,33 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+    FS = "\t"
+    OFS = FS
+    headers_num = ARGC-2  # first arg is 'awk', last arg is '-'
+    for (i = 1; i <= headers_num; i++) {
+        selected_headers[i] = "#" ARGV[i]
+        ARGV[i] = ""
+    }
+}
+
+NR == 1 && /^#/ {
+    for (i = 1; i <= NF; i++) {
+        cols[$i] = i
+    }
+
+    for (i = 1; i <= headers_num; i++) {
+        if (selected_headers[i] in cols) {
+            ordered_output[i] = cols[selected_headers[i]]
+        }
+    }
+}
+
+{
+    result = sep = ""
+    for (i = 1; i <= headers_num; i++) {
+        result = result sep $ordered_output[i]
+        sep = OFS
+    }
+    print result
+}
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $1 in
+	project)
+		shift 1
+		awk -f ./hreld_project "$@" -
+		;;
+esac
+

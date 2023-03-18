@@ -21,8 +21,8 @@ debug:
 	@echo; $(TEST) -v || true
 
 check: $(LINT)
-	@printf '# Static analysis: $(LINT) tests/*.sh' >&2
-	@$(LINT) tests/*.sh
+	@printf '# Static analysis: $(LINT) hreld tests/*.sh' >&2
+	@$(LINT) hreld tests/*.sh
 	
 test: $(TEST)
 	@echo '# Unit tests: $(TEST)' >&2
