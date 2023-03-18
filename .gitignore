@@ -1,0 +1,17 @@
+# .gitignore whitelist
+
+# Ignore everything
+*
+
+# But not these files...
+!/.gitignore
+!README.md
+!LICENSE
+
+!Makefile
+!.circleci/
+!.circleci/*
+
+!tests/
+!tests/*.sh
+
